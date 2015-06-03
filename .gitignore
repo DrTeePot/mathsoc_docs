@@ -1,0 +1,14 @@
+## File suffixes that are often generated and do not want to be tracked
+*~
+.*.sw?
+*.aux
+*.log
+*.loc
+*.toc
+*.lec
+*.thm
+*.idx
+*.ilg
+*.ind
+*.def
+*.pdf

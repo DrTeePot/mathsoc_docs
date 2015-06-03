@@ -1,0 +1,58 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{tocloft}
+\hypersetup{
+  colorlinks=false,
+  linktoc=all
+}
+
+\titleformat{\section}{\bfseries \LARGE \sffamily}
+            {Policy \thesection.}{1.6em}{}
+\newcommand{\sectionbreak}{\clearpage}
+\titleformat*{\subsection}{\Large \bfseries \sffamily}
+\titleformat*{\subsubsection}{\large \bfseries \sffamily}
+
+\makeatletter\renewcommand{\@pnumwidth}{9em}\makeatother
+
+\renewcommand{\cftsecnumwidth}{2em}
+\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsecnumwidth}{3em}
+\renewcommand{\cftsubsubsecfont}{\sffamily}
+\renewcommand{\cftsubsubsecindent}{2.5em}
+\renewcommand{\cftsubsubsecnumwidth}{3.4em}
+
+\setcounter{tocdepth}{2}
+
+\begin{document}
+\begin{titlepage}\begin{center}
+\sffamily
+\includegraphics[width=6.5in]{logo.pdf}
+
+\vspace{10em}
+
+{\Huge \bfseries POLICIES}
+
+\vspace{3em}
+
+{\LARGE \bfseries \today}
+
+\vspace{7em}
+
+{\LARGE The Mathematics Society of the University of Waterloo}
+\end{center}\end{titlepage}
+
+{\large \sffamily \tableofcontents}
+
+\input{elections.tex}
+\input{cnd.tex}
+\input{bookings.tex}
+\input{external-funding.tex}
+\input{clubs.tex}
+\input{keys.tex}
+\input{signing.tex}
+
+\end{document}

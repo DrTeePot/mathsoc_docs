@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{tocloft}
+
+\renewcommand{\thesection}{\Roman{section}}
+\titleformat{\section}{\bfseries \LARGE \sffamily}
+            {Article \thesection.}{1.6em}{}
+\titleformat*{\subsection}{\Large \bfseries \sffamily}
+\titleformat*{\subsubsection}{\large \bfseries \sffamily}
+
+\renewcommand{\cftsecnumwidth}{2em}
+\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsecnumwidth}{3em}
+\renewcommand{\cftsubsubsecfont}{\sffamily}
+\renewcommand{\cftsubsubsecindent}{2.5em}
+\renewcommand{\cftsubsubsecnumwidth}{3.4em}
+
+\begin{document}
+%%% TITLE PAGE
+\begin{titlepage}\begin{center}
+\sffamily
+\includegraphics[width=6.5in]{logo.pdf}
+
+\vspace{10em}
+
+{\Huge \bfseries CONSTITUTION \& BYLAWS}
+
+\vspace{3em}
+
+{\LARGE \bfseries October 2, 2013}
+
+\vspace{7em}
+
+{\LARGE The Mathematics Society of the University of Waterloo}
+\end{center}\end{titlepage}
+
+%%% TABLE OF CONTENTS
+\setcounter{tocdepth}{4}
+{\large \sffamily \tableofcontents}
+
+\newpage
+
+\input{bylaws-content.tex}
+
+\end{document}
