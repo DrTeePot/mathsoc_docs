@@ -1,29 +1,61 @@
 \documentclass[12pt,letterpaper]{article}
+
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{fancyhdr}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
 
-\pagestyle{fancy}
+%% Macros
+\newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
+\newcommand{\meetingDate}{January 3, 2015}
+\newcommand{\meetingTime}{15:40}
+\newcommand{\meetingLocation}{MC 5417}
 
+%% Document settings
 \title{Mathematics Society Council Agenda}
+\date{June 2, 2015}
 
+%% Header stuff
+\pagestyle{fancy}
 \fancyhead{}
-\chead{June 2, 2015}
+\chead{}
 \lhead{Mathematics Society Council}
-\rhead{University of Waterloo}
+\rhead{\meetingDate}
 
 \begin{document}
-
-\section{Agenda}
-
-This is the agenda of the nth meeting of the council of the Mathematics Society of the University of Waterloo
+\hypersetup{}
 
 
-\subsection{Consent}
+%% Add the title to the page, standardized title
+\input{title}
 
-\subsection{Regular}
+\section*{Consent}
+\begin{description}
+	\item[Motion] To approve the minutes from the May 28 meeting as attached.
+	\item[Information] Executive Reports
+	\begin{enumerate}
+		\item \nameref{sec:president}
+		\item \nameref{sec:vpacademic}
+		\item \nameref{sec:vpfinance}
+		\item \nameref{sec:vpinternal}
+		\item \nameref{sec:vpoperations}
+	\end{enumerate}
+\end{description}
+\HRule
+\section*{Regular}
+\begin{description}
+	\item[Motion] (CS Councillor – Fatema Boxwala): To approve \$160 in funding from the Capital Improvement fund for WiCS Undergrad, to buy two hard drives for their servers
+	\item[Motion] (Vice President, Internal – Gloria Huang): To increase Statistics Club BOT funding from \$150 to \$212.44. Note that the club has seen an increase in membership to 58 MathSoc and 69 total. Attendance at the event was 36-40 people.
+	\item[Motion] (President – Deanna Darby Barton): For MathSoc Council to form a stance either for or against the change in calculator policy. 
+Recently the Faculty has changed its policy to only accept one calculator as approved. The Mathematics Society was not consulted, nor is there evidence of student input into this decision.
+\end{description}
 
-Something somethign this si a document that I wanna redner 
+\newpage
+
+\input{executive_reports}
+
 \end{document}
