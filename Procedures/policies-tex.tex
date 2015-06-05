@@ -10,11 +10,19 @@
   linktoc=all
 }
 
-\titleformat{\section}{\bfseries \LARGE \sffamily}
+%% Font things
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} \normalfont %to load T1lmr.fd 
+\DeclareFontShape{T1}{lmr}{bx}{sc} { <-> ssub * cmr/bx/sc }{}
+
+
+\newcommand{\doctype}{Policies}
+
+\titleformat{\section}{\bfseries \LARGE \scshape}
             {Policy \thesection.}{1.6em}{}
 \newcommand{\sectionbreak}{\clearpage}
-\titleformat*{\subsection}{\Large \bfseries \sffamily}
-\titleformat*{\subsubsection}{\large \bfseries \sffamily}
+\titleformat*{\subsection}{\Large \bfseries \scshape}
+\titleformat*{\subsubsection}{\large \bfseries \scshape}
 
 \makeatletter\renewcommand{\@pnumwidth}{9em}\makeatother
 
@@ -28,24 +36,9 @@
 \setcounter{tocdepth}{2}
 
 \begin{document}
-\begin{titlepage}\begin{center}
-\sffamily
-\includegraphics[width=6.5in]{logo.pdf}
 
-\vspace{10em}
-
-{\Huge \bfseries POLICIES}
-
-\vspace{3em}
-
-{\LARGE \bfseries \today}
-
-\vspace{7em}
-
-{\LARGE The Mathematics Society of the University of Waterloo}
-\end{center}\end{titlepage}
-
-{\large \sffamily \tableofcontents}
+\input{policies_title}
+{\large \tableofcontents}
 
 \input{elections.tex}
 \input{cnd.tex}
