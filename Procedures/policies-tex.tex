@@ -1,44 +1,15 @@
-\documentclass[11pt]{article}
-\usepackage{fullpage}
-\usepackage{graphicx}
-\usepackage{titlesec}
-\usepackage{amsmath}
-\usepackage{hyperref}
-\usepackage{tocloft}
-\hypersetup{
-  colorlinks=false,
-  linktoc=all
-}
+\documentclass[12pt, letterpaper]{article}
+\usepackage{../mathsoc}
 
-%% Font things
-\usepackage[T1]{fontenc}
-\usepackage{lmodern} \normalfont %to load T1lmr.fd 
-\DeclareFontShape{T1}{lmr}{bx}{sc} { <-> ssub * cmr/bx/sc }{}
-
-
-\newcommand{\doctype}{Policies}
-\newcommand{\logo}{../logo.pdf}
-
-\titleformat{\section}{\bfseries \LARGE \scshape}
-            {Policy \thesection.}{1.6em}{}
+% new page for each section
 \newcommand{\sectionbreak}{\clearpage}
-\titleformat*{\subsection}{\Large \bfseries \scshape}
-\titleformat*{\subsubsection}{\large \bfseries \scshape}
 
-\makeatletter\renewcommand{\@pnumwidth}{9em}\makeatother
-
-\renewcommand{\cftsecnumwidth}{2em}
-\renewcommand{\cftsubsecfont}{\sffamily}
-\renewcommand{\cftsubsecnumwidth}{3em}
-\renewcommand{\cftsubsubsecfont}{\sffamily}
-\renewcommand{\cftsubsubsecindent}{2.5em}
-\renewcommand{\cftsubsubsecnumwidth}{3.4em}
-
-\setcounter{tocdepth}{2}
+\title{Policies}
 
 \begin{document}
 
 \input{../title}
+
 {\large \tableofcontents}
 
 \input{elections.tex}
@@ -48,5 +19,23 @@
 \input{clubs.tex}
 \input{keys.tex}
 \input{signing.tex}
+
+%%%% The ODT Stuff here
+\input{staff.tex}
+\input{appointments}
+\input{computing}
+\input{novelties}
+\input{management}
+\input{postings}
+\input{firstyears}
+\input{mathgrad}
+\input{wim}
+\input{budget}
+\input{lockers}
+\input{electronic}
+\input{hlm}
+\input{mathinstructor}
+\input{cif}
+
 
 \end{document}

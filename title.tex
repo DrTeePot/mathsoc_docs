@@ -1,10 +1,14 @@
-\begin{titlepage}\begin{center}
-%%\sffamily
+\begin{titlepage}
+\begin{center}
+
 \includegraphics[width=6.5in]{\logo}
 
 \vspace{8em}
 
-{\Huge \scshape{\bfseries \doctype}}
+\makeatletter % allow access to @title
+\fontsize{11}{11}\selectfont
+{\Huge \scshape{\bfseries \@title}}
+\makeatother % release @ symbol
 
 \vspace{3em}
 

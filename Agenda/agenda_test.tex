@@ -1,69 +1,128 @@
-\documentclass[12pt,letterpaper]{article}
-
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-
-\usepackage{fancyhdr}
-\usepackage{enumitem}
-\usepackage{pdfpages}
-\usepackage{hyperref}
-\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+\documentclass[12pt, letterpaper]{article}
+\usepackage{../mathsoc}
 
 %% Macros
-\newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
-\newcommand{\meetingDate}{June 10, 2015}
+\newcommand{\agendaDate}{June 8, 2015} % agenda items deadline
+\newcommand{\meetingDate}{June 10, 2015} 
 \newcommand{\meetingTime}{18:00}
 \newcommand{\meetingLocation}{MC 5417}
 
-%% Document settings
-\title{Mathematics Society Council Agenda}
-\date{June 2, 2015}
-
-%% Header stuff
-\pagestyle{fancy}
-\fancyhead{}
+ %% Header stuff
 \chead{}
 \lhead{Mathematics Society Council}
 \rhead{\meetingDate}
 
+%% Document settings
+\title{Agenda}
+\date{June 2, 2015}
+
 \begin{document}
-\hypersetup{}
+\hypersetup{} % setting up hyperlinks
 
+%\mathsoctitle
 
-%% Add the title to the page, standardized title
-\input{title}
+\begin{center}
+% Title
+{ \huge \bfseries Agenda \\[0.4cm] }
+{\textsc{~\textbf{\meetingDate} at \textbf{\meetingTime} in \textbf{\meetingLocation}}}
+\\[0.2cm]
+
+\begin{minipage}[t]{0.5\textwidth}
+\begin{flushleft} \large
+\emph{Speaker:}
+Tristan \textsc{Potter}
+\end{flushleft}
+\end{minipage}%
+\begin{minipage}[t]{0.5\textwidth}
+\begin{flushright} \large
+\emph{Secretary:} 
+Patrick \textsc{Melanson}
+\end{flushright}
+\end{minipage}
+
+\HRule \\[0.4cm]
+\end{center}
 
 \section*{Consent}
 \begin{description}
-	\item[Motion] To approve the May 26, 2015 meeting minutes as attached.
-	\item[Motion] To approve the May 28, 2015 meeting minutes as attached.
+	\item[Motion] To approve the June 10, 2015 meeting minutes as \hyperref[minutes]{attached}.
 	\item[Information] Executive Reports
 	\begin{enumerate}
-		\item \nameref{sec:president}
-		\item \nameref{sec:vpacademic}
-		\item \nameref{sec:vpfinance}
-		\item \nameref{sec:vpinternal}
-		\item \nameref{sec:vpoperations}
+		\item \hyperref[president]{President}
+		\item \hyperref[vpacademic]{Vice President, Academic}
+		\item \hyperref[vpfinance]{Vice President, Finance}
+		\item \hyperref[vpinternal]{Vice President, Internal}
+		\item \hyperref[vpoperations]{Vice President, Operations}
 	\end{enumerate}
 \end{description}
 \HRule
 \section*{Regular}
 \begin{description}
-	\item[Motion] (CS Councillor – Fatema Boxwala): To approve \$160 in funding from the Capital Improvement fund for WiCS Undergrad, to buy two hard drives for their servers
-	\item[Motion] (Vice President, Internal – Gloria Huang): To increase Statistics Club BOT funding from \$150 to \$212.44. Note that the club has seen an increase in membership to 58 MathSoc and 69 total. Attendance at the event was 36-40 people.
-	\item[Motion] (President – Deanna Darby Barton): For MathSoc Council to form a stance either for or against the change in calculator policy. 
-Recently the Faculty has changed its policy to only accept one calculator as approved. The Mathematics Society was not consulted, nor is there evidence of student input into this decision.
+	\item[Motion] (President - Deanna Darby Barton): Motion regarding Double Degree Club choosing some option related to fees.
+	\item[Motion] (MathNews): MathNews gift money
+	\item[Motion] (Sean Harrup?): To change clubs policy so that we can still charge mathsoc members fees or some other method of making accurate membership counts, as well as account for non-mathsoc members
+	\item[Motion] (Councillor - Sean Harrup): Motion to make the \hyperref[cif]{attached} amendments to MathSoc Policy section 14, effective Fall 2015.
 \end{description}
 
 \newpage
 
 \includepdf[pages={-},scale=.8,pagecommand={}]{2015-05-26minutes_draft.pdf}
-\includepdf[pages={-},scale=.8,pagecommand={}]{2015-05-28minutes_draft.pdf}
-
+\hlabel{minutes}
 \newpage
 
-\input{executive_reports}
+\section*{Executive Reports}
+Submitted by \agendaDate at 12:00.
+
+%% Begin reports
+\hlabel{president}
+\subsection*{President}
+\input{presidents_report}
+
+\hlabel{vpacademic}
+\subsection*{Vice President, Academic}
+\input{vpacademic_report}
+
+\hlabel{vpfinance}
+\subsection*{Vice President, Finance}
+\input{vpfinance_report}
+
+\hlabel{vpinternal}
+\subsection*{Vice President, Internal}
+\input{vpinternal_report}
+
+\hlabel{vpoperations}
+\subsection*{Vice President, Operations}
+\input{vpoperations_report}
+
+\newpage
+\hlabel{cif}
+\section*{CIF Policy Amendment}
+
+\subsection*{Section 14.2}
+To amend Section 14.2 of policy (Capital Improvements Fund, Composition) from:\\
+
+“The Capital Improvements Fund Committee (the Committee) shall be formed each Winter term or when Council allocates a special project fund, composed of […]”\\
+
+to\\
+
+“The Committee shall be appointed at the first council meeting of every term, composed of […]”
+
+\subsection*{Section 14.3}
+To amend section 14.3 of policy (Capital Improvements Fund, Fund) from:\\
+
+"[…] Will be composed of the student fee contributions and interest on the principle portion from the preceding Spring and Fall terms as well as the current Winter term […]"\\
+
+to\\
+
+“[…] Will be composed of the student fee contributions and interest on the principle portion from the current term […]”
+
+\subsection*{Section 14.6}
+To amend section 14.6 of policy (Capital Improvements Fund, Procedure) from:\\
+
+“[…] Appropriate application forms shall be made available no later than the end of January for use of the Fund and as soon as possible after Council allocates a special project fund. The deadline for submissions of proposals to the President shall be the later of the end of January or 10 business days after applications are made available. […]”\\
+
+to\\
+
+“[…] Appropriate application forms shall be made available no later than the end of the first month of the term for use of the Fund and as soon as possible after Council allocates a special project fund. The deadline for submissions of proposals to the President shall be the end of the first month of term or 10 business days after applications are made available, whichever is later. […]”\\
 
 \end{document}
