@@ -25,7 +25,9 @@
 %% Font things
 \RequirePackage[T1]{fontenc}
 \RequirePackage{anyfontsize}
-\RequirePackage{lmodern} \normalfont %to load T1lmr.fd 
+\RequirePackage{lmodern} \normalfont %to load T1lmr.fd
+
+\RequirePackage[normalem]{ulem}
 
 \hypersetup{
   colorlinks=false,
@@ -36,42 +38,28 @@
 \setlist[description]{leftmargin=\parindent,labelindent=\parindent}
 
 
-
-%% Process options
-
-%% 'sans serif' option
-\DeclareOption{sans}{
-  \renewcommand{\familydefault}{\sfdefault}
-}
-
-%% 'roman' option
-\DeclareOption{roman}{
-  \renewcommand{\familydefault}{\rmdefault}
-}
-
-%% Global indentation option
-\newif\if@neverindent\@neverindentfalse
-\DeclareOption{neverindent}{
-  \@neverindenttrue
-}
-
-%% DEFAULT OPTION
-\ExecuteOptions{roman}
-
-%% END OPTIONS
-\ProcessOptions\relax
-
 % Tranditional Tex commands
 
 \DeclareFontShape{T1}{lmr}{bx}{sc} { <-> ssub * cmr/bx/sc }{}
 
 \titleformat{\section}{\bfseries \LARGE \scshape}
-            {Policy \thesection.}{1.6em}{}
+{Policy \thesection.}{1.6em}{}
 
 \titleformat*{\subsection}{\Large \bfseries \scshape}
 \titleformat*{\subsubsection}{\large \bfseries \scshape}
 
 \makeatletter\renewcommand{\@pnumwidth}{9em}\makeatother
+
+\renewcommand{\cftsecnumwidth}{2em}
+\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsecnumwidth}{3em}
+\renewcommand{\cftsubsubsecfont}{\sffamily}
+\renewcommand{\cftsubsubsecindent}{2.5em}
+\renewcommand{\cftsubsubsecnumwidth}{3.4em}
+\renewcommand{\familydefault}{\rmdefault}
+
+
+\renewcommand{\thesection}{\Roman{section}}
 
 \renewcommand{\cftsecnumwidth}{2em}
 \renewcommand{\cftsubsecfont}{\sffamily}
@@ -88,10 +76,87 @@
 \fancyhead{}
 
 \newcommand{\logo}{../logo.pdf}
+\newcommand{\defvar}[2]{\def#1##1{\gdef#2{##1}}#1{}}
 
 % Macros
 \newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
 \newcommand{\hlabel}{\phantomsection\label}
 \newcommand{\mathsoctitle}{\input{../title}}
+
+%% Process options
+
+%% 'agenda' option
+\DeclareOption{agenda}{
+%  \renewcommand{\familydefault}{\sfdefault}
+  \title{Agenda}
+  
+  % current address, appears in left column
+  \defvar{\agendaDate}{\printAgendaDate}
+  \defvar{\meetingDate}{\printMeetingDate}
+  \defvar{\meetingTime}{\printMeetingTime}
+  \defvar{\meetingLocation}{\printMeetingLocation}
+  
+   %% Header stuff
+   \chead{}
+   \lhead{Mathematics Society Council}
+   \rhead{\printMeetingDate}
+  
+  %\mathsoctitle
+  \newcommand{\header}{\begin{center}
+  	% Title
+  	{ \huge \bfseries Agenda \\[0.4cm] }
+  	{\textsc{~\textbf{\printMeetingDate} at \textbf{\printMeetingTime} in \textbf{\printMeetingLocation}}}
+  	\\[0.2cm]
+  	
+  	\begin{minipage}[t]{0.5\textwidth}
+  		\begin{flushleft} \large
+  			\emph{Speaker:}
+  			\textsc{Tristan Potter}
+  		\end{flushleft}
+  	\end{minipage}%
+  	\begin{minipage}[t]{0.5\textwidth}
+  		\begin{flushright} \large
+  			\emph{Secretary:} 
+  			\textsc{Patrick Melanson}
+  		\end{flushright}
+  	\end{minipage}
+  	
+  	\HRule \\[0.4cm]
+  \end{center}
+  }
+}
+
+%% 'minutes' option
+\DeclareOption{minutes}{
+  \renewcommand{\familydefault}{\rmdefault}
+}
+
+%% 'policy' option
+\DeclareOption{policy}{
+	\renewcommand{\familydefault}{\rmdefault}
+	% new page for each section
+	\newcommand{\sectionbreak}{\clearpage}
+	
+	\title{Policies}
+}
+
+%% 'procedure' option
+\DeclareOption{procedure}{
+
+}
+
+%% 'bylaw' option
+\DeclareOption{bylaw}{
+	\title{Bylaws}
+}
+
+%% 'stance' option
+\DeclareOption{stance}{
+
+}
+
+%% END OPTIONS
+\ProcessOptions \relax
+
 
 \endinput
