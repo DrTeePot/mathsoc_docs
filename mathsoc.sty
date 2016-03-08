@@ -141,7 +141,7 @@
   		\addtocounter{agendaTimeMin}{##2}
   		\ifnum\value{agendaTimeMin}>59 
   		\setcounter{agendaTimeMin}{\numexpr \value{agendaTimeMin} - 60} \stepcounter{agendaTimeHour}
-  		\fi
+  		\fi\\
   		}
   	\newcommand{\information}[3]{
   		\item[##1 | Information]  \hfill \theagendaTimeHour:\theagendaTimeMin\ifnum\value{agendaTimeMin}<10 0\fi \\
@@ -150,7 +150,7 @@
   		\addtocounter{agendaTimeMin}{##2}
   		\ifnum\value{agendaTimeMin}>59 
   		\setcounter{agendaTimeMin}{\numexpr \value{agendaTimeMin} - 60} \stepcounter{agendaTimeHour}
-  		\fi
+  		\fi\\
   		}
   	\newcommand{\discussion}[3]{
   		\item[##1 | Discussion]  \hfill \theagendaTimeHour:\theagendaTimeMin\ifnum\value{agendaTimeMin}<10 0\fi \\
@@ -161,6 +161,15 @@
   		\setcounter{agendaTimeMin}{\numexpr \value{agendaTimeMin} - 60} \stepcounter{agendaTimeHour}
   		\fi\\
   		}
+      \newcommand{\presentation}[3]{
+          \item[##1 | Presentation]  \hfill \theagendaTimeHour:\theagendaTimeMin\ifnum\value{agendaTimeMin}<10 0\fi \\
+          ##3
+          % then we incriment the counter
+          \addtocounter{agendaTimeMin}{##2}
+          \ifnum\value{agendaTimeMin}>59 
+          \setcounter{agendaTimeMin}{\numexpr \value{agendaTimeMin} - 60} \stepcounter{agendaTimeHour}
+          \fi\\
+          }
   	\begin{description}
   	}{ 
   	% end code
@@ -222,6 +231,10 @@
   		\item[##1 | Discussion] 
   		##2
   	}
+      \newcommand{\presentation}[2]{
+          \item[##1 | Presentation] 
+          ##2
+      }
   	\begin{description}}{
   	% end code 
   	\end{description}} % done new environment
