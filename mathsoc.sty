@@ -88,13 +88,16 @@
 %% 'agenda' option
 \DeclareOption{agenda}{
 %  \renewcommand{\familydefault}{\sfdefault}
+  \newcounter{agendaTimeMin}
+  \newcounter{agendaTimeHour}
   \title{Agenda}
   
   % current address, appears in left column
   \defvar{\agendaDate}{\printAgendaDate}
   \defvar{\meetingDate}{\printMeetingDate}
-  \defvar{\meetingTime}{\printMeetingTime}
   \defvar{\meetingLocation}{\printMeetingLocation}
+  \defvar{\speaker}{\printSpeaker}
+  \defvar{\secretary}{\printSecretary}
   
    %% Header stuff
    \chead{}
@@ -105,30 +108,123 @@
   \newcommand{\header}{\begin{center}
   	% Title
   	{ \huge \bfseries Agenda \\[0.4cm] }
-  	{\textsc{~\textbf{\printMeetingDate} at \textbf{\printMeetingTime} in \textbf{\printMeetingLocation}}}
+  	{\textsc{~\textbf{\printMeetingDate} at \textbf{\theagendaTimeHour:\theagendaTimeMin\ifnum\value{agendaTimeMin}<10 0\fi} in \textbf{\printMeetingLocation}}}
   	\\[0.2cm]
   	
   	\begin{minipage}[t]{0.5\textwidth}
   		\begin{flushleft} \large
   			\emph{Speaker:}
-  			\textsc{Tristan Potter}
+  			\textsc{\printSpeaker}
   		\end{flushleft}
   	\end{minipage}%
   	\begin{minipage}[t]{0.5\textwidth}
   		\begin{flushright} \large
   			\emph{Secretary:} 
-  			\textsc{Patrick Melanson}
+  			\textsc{\printSecretary}
   		\end{flushright}
   	\end{minipage}
   	
   	\HRule \\[0.4cm]
-  \end{center}
-  }
+  \end{center}}
+  
+%  \ifnum\value{agendaTimeMin}>\value{minnumber}11 correct\else oops\fi
+  
+  
+  %agenda items
+  \newenvironment{business}{
+  	% begin code
+  	\newcommand{\motion}[3]{
+  		% text is printed
+  		\item[##1 | Motion]  \hfill \theagendaTimeHour:\theagendaTimeMin\ifnum\value{agendaTimeMin}<10 0\fi \\
+  		##3
+  		% then we incriment the counter
+  		\addtocounter{agendaTimeMin}{##2}
+  		\ifnum\value{agendaTimeMin}>59 
+  		\setcounter{agendaTimeMin}{\numexpr \value{agendaTimeMin} - 60} \stepcounter{agendaTimeHour}
+  		\fi
+  		}
+  	\newcommand{\information}[3]{
+  		\item[##1 | Information]  \hfill \theagendaTimeHour:\theagendaTimeMin\ifnum\value{agendaTimeMin}<10 0\fi \\
+  		##3
+  		% then we incriment the counter
+  		\addtocounter{agendaTimeMin}{##2}
+  		\ifnum\value{agendaTimeMin}>59 
+  		\setcounter{agendaTimeMin}{\numexpr \value{agendaTimeMin} - 60} \stepcounter{agendaTimeHour}
+  		\fi
+  		}
+  	\newcommand{\discussion}[3]{
+  		\item[##1 | Discussion]  \hfill \theagendaTimeHour:\theagendaTimeMin\ifnum\value{agendaTimeMin}<10 0\fi \\
+  		##3
+  		% then we incriment the counter
+  		\addtocounter{agendaTimeMin}{##2}
+  		\ifnum\value{agendaTimeMin}>59 
+  		\setcounter{agendaTimeMin}{\numexpr \value{agendaTimeMin} - 60} \stepcounter{agendaTimeHour}
+  		\fi\\
+  		}
+  	\begin{description}
+  	}{ 
+  	% end code
+	\end{description}
+	}
 }
 
 %% 'minutes' option
 \DeclareOption{minutes}{
-  \renewcommand{\familydefault}{\rmdefault}
+	
+	\renewcommand{\familydefault}{\rmdefault}
+	% Title
+	
+	% current address, appears in left column
+	\defvar{\meetingTime}{\printMeetingTime}
+	\defvar{\meetingDate}{\printMeetingDate}
+	\defvar{\meetingLocation}{\printMeetingLocation}
+	\defvar{\speaker}{\printSpeaker}
+	\defvar{\secretary}{\printSecretary}
+	
+	
+	%\mathsoctitle
+	\newcommand{\header}{\begin{center}
+			% Title
+			{ \huge \bfseries Minutes \\[0.4cm] }
+			{\textsc{~\textbf{\printMeetingDate} at \textbf{\printMeetingTime} in \textbf{\printMeetingLocation}}}
+			\\[0.2cm]
+			
+			\begin{minipage}[t]{0.5\textwidth}
+				\begin{flushleft} \large
+					\emph{Speaker:}
+					\textsc{\printSpeaker}
+				\end{flushleft}
+			\end{minipage}%
+			\begin{minipage}[t]{0.5\textwidth}
+				\begin{flushright} \large
+					\emph{Secretary:} 
+					\textsc{\printSecretary}
+				\end{flushright}
+			\end{minipage}
+			
+			\HRule \\[0.4cm]
+		\end{center}}
+  
+  %minute items
+  \newenvironment{business}{
+  	% begin code
+  	\newcommand{\motion}[3]{
+  		% text is printed
+  		\item[Motion | ##1, seconded by ##2]
+  		##3
+  	}
+  	\newcommand{\information}[2]{
+  		% text is printed
+  		\item[Information | ##1] 
+  		##2
+  	}
+  	\newcommand{\discussion}[2]{
+  		\item[##1 | Discussion] 
+  		##2
+  	}
+  	\begin{description}}{
+  	% end code 
+  	\end{description}} % done new environment
 }
 
 %% 'policy' option
