@@ -42,8 +42,7 @@
 
 \DeclareFontShape{T1}{lmr}{bx}{sc} { <-> ssub * cmr/bx/sc }{}
 
-\titleformat{\section}{\bfseries \LARGE \scshape}
-{Policy \thesection.}{1.6em}{}
+
 
 \titleformat*{\subsection}{\Large \bfseries \scshape}
 \titleformat*{\subsubsection}{\large \bfseries \scshape}
@@ -245,7 +244,8 @@
 	\renewcommand{\familydefault}{\rmdefault}
 	% new page for each section
 	\newcommand{\sectionbreak}{\clearpage}
-	
+	\titleformat{\section}{\bfseries \LARGE \scshape}
+	{Policy \thesection.}{1.6em}{}
 	\title{Policies}
 }
 
@@ -256,6 +256,8 @@
 
 %% 'bylaw' option
 \DeclareOption{bylaw}{
+	\titleformat{\section}{\bfseries \LARGE \scshape}
+	{Article \thesection.}{1.6em}{}
 	\title{Bylaws}
 }
 
