@@ -85,7 +85,10 @@
 %% Process options
 
 %% 'agenda' option
-\DeclareOption{agenda}{
+\DeclareOption{agenda}{%
+% Description lists are indented
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+
 %  \renewcommand{\familydefault}{\sfdefault}
   \newcounter{agendaTimeMin}
   \newcounter{agendaTimeHour}
