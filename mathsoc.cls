@@ -63,19 +63,19 @@
 % Tranditional Tex commands
 \DeclareFontShape{T1}{lmr}{bx}{sc} {<-> ssub * cmr/bx/sc }{}
 
+\titleformat*{\section}{\Large \bfseries \scshape}
 \titleformat*{\subsection}{\Large \bfseries \scshape}
 \titleformat*{\subsubsection}{\large \bfseries \scshape}
 
 \makeatletter\renewcommand{\@pnumwidth}{9em}\makeatother
 
 \renewcommand{\cftsecnumwidth}{2em}
-\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\rmfamily}
 \renewcommand{\cftsubsecnumwidth}{3em}
-\renewcommand{\cftsubsubsecfont}{\sffamily}
+\renewcommand{\cftsubsubsecfont}{\rmfamily}
 \renewcommand{\cftsubsubsecindent}{2.5em}
 \renewcommand{\cftsubsubsecnumwidth}{3.4em}
 \renewcommand{\familydefault}{\rmdefault}
-%\renewcommand{\thesection}{\Roman{section}}
 
 % Formatting TOC
 \setcounter{tocdepth}{2}
