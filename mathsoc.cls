@@ -90,7 +90,7 @@
 \newcommand{\mathsoctitle}{\input{../title}}
 
 %% Header stuff
-\lhead{\title: page \thepage}
+\lhead{}
 \chead{}
 \rhead{The Mathematics Society}
 
