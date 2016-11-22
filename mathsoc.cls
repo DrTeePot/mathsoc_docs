@@ -57,9 +57,6 @@
   linktoc=all
 }
 
-% Description lists are indented
-\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
-
 % Tranditional Tex commands
 \DeclareFontShape{T1}{lmr}{bx}{sc} {<-> ssub * cmr/bx/sc }{}
 
@@ -90,7 +87,7 @@
 % Macros
 \newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
 \newcommand{\hlabel}{\phantomsection\label}
-\newcommand{\mathsoctitle}{\input{title}}
+\newcommand{\mathsoctitle}{\input{../title}}
 
 %% Header stuff
 \lhead{\title: page \thepage}
