@@ -21,7 +21,7 @@ SOURCES:=$(DIST_FOLDER) $(COMPILATION_FOLDER)
 SOURCES_C:=$(SOURCES) $(ANNOTATED) Makefile
 SOURCES_P:=$(SOURCES) $(PUBLIC) Makefile
 
-all: annotated public
+all: public
 
 .refresh:
 	touch .refresh
