@@ -1,135 +1,43 @@
-\documentclass[11pt]{book}
-\usepackage{fullpage}
-\usepackage[margin=0.5in]{geometry}
-\usepackage{graphicx}
-\usepackage{titlesec}
-\usepackage{amsmath}
-\usepackage{tocloft}
-\usepackage{environ}
-\usepackage{paracol}
-\usepackage{etoolbox}
-\usepackage{catchfile}
-\usepackage{etextools}
+\documentclass[11pt]{mathsoc}
+\usepackage{bylaws}
 
-\CatchFileDef{\bylaws}{bylaws-content.tex}{}
-\CatchFileDef{\annotationsbylaws}{annotations-bylaws.tex}{}
-
-\titleformat*{\subsection}{\Large \bfseries \sffamily}
-\titleformat*{\subsubsection}{\large \bfseries \sffamily}
-
-\renewcommand{\cftsecnumwidth}{2em}
-\renewcommand{\cftsubsecfont}{\sffamily}
-\renewcommand{\cftsubsecnumwidth}{3em}
-\renewcommand{\cftsubsubsecfont}{\sffamily}
-\renewcommand{\cftsubsubsecindent}{2.5em}
-\renewcommand{\cftsubsubsecnumwidth}{3.4em}
-
-\newbool{adone}
-\NewEnviron{switchtoannotations}{
-  \expandnext\ifblank\BODY{
-    \message{donea}
-    \ifbool{adone}{}{
-      \global\def\bodytext{\sta}
-      \switchcolumn*
-      \annotationstext
-      \end{switchtobody}
-    }
-  }{
-    \message{conta}
-    \global\let\bodytext\BODY
-    \switchcolumn*
-    \annotationstext
-    \end{switchtobody}
-  }
-}
-\NewEnviron{switchtobody}{
-  \expandnext\ifblank\BODY{
-    \message{doneb}
-    \booltrue{adone}
-    \global\def\annotationstext{\stb}
-  }{
-    \message{contb}
-    \global\let\annotationstext\BODY
-  }
-  \switchcolumn
-  \bodytext
-  \end{switchtoannotations}
-}
-\NewEnviron{annotations}{
-  \global\let\annotationstextorig\BODY
-  \global\def\annotationstext{\annotationstextorig\stb}
-}
-\NewEnviron{body}{
-  \global\let\bodytextorig\BODY
-  \global\def\bodytext{\bodytextorig\sta}
-
-  \boolfalse{adone}
-  \begin{paracol}{2}
-  \annotationstext
-  \end{switchtobody}
-  \end{paracol}
-  \global\let\annotationstext\undefined
-  \global\let\bodytext\undefined
-  \global\let\annotationstextorig\undefined
-  \global\let\bodytextorig\undefined
-}
-
-\def\stb{\begin{switchtobody}}
-\def\sta{\begin{switchtoannotations}}
+\lhead{Bylaws}
+\chead{Annotated: Not for public distribution}
 
 \begin{document}
+\annotationstrue% compile the annotations into this document
 
 %%% TITLE PAGE
-\begin{titlepage}\begin{center}
-\sffamily
-\includegraphics[width=6.5in]{../logo.pdf}
+\input{./content/title.tex}
 
-\vspace{10em}
-
-{\Huge \bfseries ANNOTATED DOCUMENTS}
-
-\vspace{3em}
-
-{\LARGE \bfseries November 30, 2011}
-
-\vspace{7em}
-
-{\LARGE The Mathematics Society of the University of Waterloo}
-\end{center}\end{titlepage}
+%%% The Forward, Roberts Rules of Order, and a guide
+\ifannotations
+\input{./content/introduction.tex}
+\fi
 
 %%% TABLE OF CONTENTS
 \setcounter{tocdepth}{4}
-{\large \sffamily \tableofcontents}
+{\large \tableofcontents}
 
-\numberwithin{section}{part}
-
-\part{Overview}
-\titleformat*{\section}{\bfseries \LARGE \sffamily}
-
-\input{annotations-introduction.tex}
-
-\part{Constitution \& Bylaws}
-\titleformat{\section}{\bfseries \LARGE \sffamily}{Article \thesection.}{1.6em}{}
-
-\begingroup
-\let\sec\section
-\let\subsec\subsection
-\let\subsubsec\subsubsection
-\newcommand{\asection}[1]{\stb\sec{#1}\stb}
-\newcommand{\asubsection}[1]{\stb\subsec{#1}\stb}
-\newcommand{\asubsubsection}[1]{\stb\subsubsec{#1}\stb}
-\renewcommand{\section}[1]{\sta\sec{#1}\sta}
-\renewcommand{\subsection}[1]{\sta\subsec{#1}\sta}
-\renewcommand{\subsubsection}[1]{\sta\subsubsec{#1}\sta}
-
-\expandaftercmds{\begin{annotations}}
-  {\annotationsbylaws}
-\end{annotations}
-
-\expandaftercmds{\begin{body}}
-  {\bylaws}
-\end{body}
-
-\endgroup
+\newpage
+%%% CONSTITUTION & BYLAWS
+\input{./content/name.tex}
+\input{./content/object.tex}
+\input{./content/definitions.tex}
+\input{./content/parlimentary_authority.tex}
+\input{./content/membership.tex}
+\input{./content/board.tex}
+\input{./content/council.tex}
+\input{./content/officers.tex}
+\input{./content/elections.tex}
+\input{./content/signing.tex}
+\input{./content/general_meetings.tex}
+\input{./content/referenda.tex}
+\input{./content/collapse_and_dissolution.tex}
+\input{./content/amendments.tex}
+%%%APPENDICES
+\appendix
+\titleformat{\section}{\bfseries \LARGE \rmfamily}{Appendix \thesection.}{1.6em}{}
+\input{./appendices/method_of_equal_proportions.tex}
 
 \end{document}

@@ -87,7 +87,6 @@
 % Macros
 \newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
 \newcommand{\hlabel}{\phantomsection\label}
-\newcommand{\mathsoctitle}{\input{../title}}
 
 %% Header stuff
 \lhead{}

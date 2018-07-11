@@ -12,7 +12,7 @@ PUBLIC:=public.tex
 mkfile_path:=$(abspath $(lastword $(MAKEFILE_LIST)))
 
 MAIN:=$(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
-ANNOTATED-OUT:=$(MAIN)-annotated
+ANNOTATED_OUT:=$(MAIN)-annotated
 PUBLIC_OUT:=$(MAIN)-public
 COMPILATION_FOLDER:=bin
 DIST_FOLDER:=dist
@@ -21,7 +21,7 @@ SOURCES:=$(DIST_FOLDER) $(COMPILATION_FOLDER)
 SOURCES_C:=$(SOURCES) $(ANNOTATED) Makefile
 SOURCES_P:=$(SOURCES) $(PUBLIC) Makefile
 
-all: public
+all: public annotated
 
 .refresh:
 	touch .refresh
